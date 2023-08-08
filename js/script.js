@@ -11,6 +11,7 @@ getData("https://jimmydef.net/api/products")
   // Gestion des erreurs avec la création d'un message pour l'utilisateur
   .catch(function (err) {
     console.log("erreur chargement liste des produits:", err);
+
     errorMsg();
   });
 

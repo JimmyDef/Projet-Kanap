@@ -1,7 +1,3 @@
-const msg404 =
-  "<p >Une erreur est survenue, veuillez réessayer ulterieurement. </p>";
-const msg404WithLink = `<p >Une erreur est survenue, veuillez réessayer ulterieurement. </p> <a href="./index.html">Retour page d'accueil</a>`;
-
 //-----------------------------------------------------
 // Fonction Asyncrhone pour contacter l'API avec method fetch()
 //-----------------------------------------------------
@@ -17,12 +13,7 @@ const getData = async (url) => {
     }
   } catch (error) {
     console.error("error getData");
-
-    if (window.location.pathname === "/index.html") {
-      errorMsg(msg404);
-      return error;
-    }
-    errorMsg(msg404WithLink);
+    errorMsg();
     return error;
   }
 };
@@ -31,10 +22,15 @@ const getData = async (url) => {
 // Fonction display 404
 //-----------------------------------------------------
 
-function errorMsg(htmlToDisplay) {
+function errorMsg() {
   const errorPlaceHolder = document.querySelector("main .limitedWidthBlock");
   errorPlaceHolder.classList.add("error__msg");
-  errorPlaceHolder.innerHTML = htmlToDisplay;
+  if (window.location.pathname === "/front/index.html") {
+    errorPlaceHolder.innerHTML =
+      "<p >Une erreur est survenue, veuillez réessayer ulterieurement. </p>";
+  } else {
+    errorPlaceHolder.innerHTML = `<p >Une erreur est survenue, veuillez réessayer ulterieurement. </p> <a href="./index.html">Retour page d'accueil</a>`;
+  }
 }
 
 //-----------------------------------------------------

@@ -6,6 +6,7 @@ import { getData, setItemStorage, displayTotal } from "./utils.module.js";
 
 const emptyCart = () => {
   const cart = JSON.parse(localStorage.getItem("products"));
+  console.log("🚀 ~ emptyCart ~ cart:", cart);
   if (cart === null || cart.length === 0) {
     document.querySelector("div.cart__price").innerHTML =
       "<p>Votre panier est vide.</p>";
@@ -20,8 +21,16 @@ const emptyCart = () => {
 //-----------------------------------------------------
 
 const haveNoProduct = emptyCart();
+console.log("🚀 ~ haveNoProduct:", haveNoProduct);
+
 if (!haveNoProduct) {
   const cart = JSON.parse(localStorage.getItem("products"));
+  console.log("🚀 ~ cart:", cart);
+
+  cart.forEach((element) => {
+    console.log("🚀 ~ element:", element);
+  });
+
   const myCartSorted = cart.sort((a, b) => {
     if (a.id > b.id) {
       return 1;
@@ -30,6 +39,8 @@ if (!haveNoProduct) {
       return -1;
     }
   });
+  console.log("🚀 ~ cart 2:", cart);
+  console.log("🚀 ~ myCartSorted ~ myCartSorted:", myCartSorted);
 
   //-----------------------------------------------------
   // Ajout d'une pair clé/valeur 'order' pour le tri CSS /flexbox
@@ -38,6 +49,8 @@ if (!haveNoProduct) {
   let myCartWithOrder = myCartSorted.map((element, idx) => {
     return { ...element, order: idx };
   });
+  console.log("🚀 ~ cart 3:", cart);
+  console.log("🚀 ~ myCartSorted ~ myCartSorted:", myCartSorted);
 
   //-----------------------------------------------------
   // Création d'un tableau accueillant les prix des produits
