@@ -34,10 +34,6 @@ function errorMsg() {
 }
 
 //-----------------------------------------------------
-// Constante pour les fonctions display alert
-
-// const warningDiv = document.getElementById("warningDiv");
-//-----------------------------------------------------
 // Fonction message d'alerte quantité max atteinte
 //-----------------------------------------------------
 
